@@ -31,6 +31,12 @@ const Home = () => {
     console.log(audio);
   };
 
+  const stopSong = (index) => {
+    audio.current.pause();
+  };
+
+
+  
   return (
     <>
       <div className="text-start">
@@ -52,13 +58,13 @@ const Home = () => {
           <button className="btn btn-secondary">
             <i className="bi bi-skip-backward-btn-fill"></i>
           </button>
+          <button className="btn btn-secondary" onClick={() => audio.current.pause()}>
+            <i className="bi bi-pause-btn-fill"></i>
+          </button>
           <button
             className="btn btn-secondary"
             onClick={() => audio.current.play()}
           >
-            <i className="bi bi-pause-btn-fill"></i>
-          </button>
-          <button className="btn btn-secondary">
             <i className="bi bi-play-btn-fill"></i>
           </button>
           <button className="btn btn-secondary">
