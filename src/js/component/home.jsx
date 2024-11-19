@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 //create your first component
 const Home = () => {
   const [songs, setSongs] = useState([]);
+  const [currentIndexOfSong, setCurrentIndexOfSong] = useState(0);
+  const audio = useRef(null);
 
   useEffect(() => {
     fetch("https://playground.4geeks.com/sound/songs")
@@ -21,6 +23,14 @@ const Home = () => {
       });
   }, []);
 
+  const playSong = (index) => {
+    setCurrentIndexOfSong(index);
+    console.log(audio.current);
+    audio.current.src = `https://playground.4geeks.com${songs[index].url}`;
+    audio.current.play();
+    console.log(audio);
+  };
+
   return (
     <>
       <div className="text-start">
@@ -29,6 +39,7 @@ const Home = () => {
             <li
               key={song.id}
               className="list-group-item list-group-item-action list-group-item-success"
+              onClick={() => playSong(index)}
             >
               {song.name}
             </li>
@@ -36,11 +47,15 @@ const Home = () => {
         </ol>
       </div>
       <footer className="bg-dark text-center py-2 position-fixed bottom-0 w-100">
+        <audio ref={audio}></audio>
         <div className="d-flex justify-content-around align-items-center">
           <button className="btn btn-secondary">
             <i className="bi bi-skip-backward-btn-fill"></i>
           </button>
-          <button className="btn btn-secondary">
+          <button
+            className="btn btn-secondary"
+            onClick={() => audio.current.play()}
+          >
             <i className="bi bi-pause-btn-fill"></i>
           </button>
           <button className="btn btn-secondary">
