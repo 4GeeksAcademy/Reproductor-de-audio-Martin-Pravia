@@ -35,8 +35,19 @@ const Home = () => {
     audio.current.pause();
   };
 
+  const nextSong = () => {
+    const next =
+      currentIndexOfSong >= songs.length - 1 ? 0 : currentIndexOfSong + 1;
+    playSong(next);
+  };
 
-  
+  const prevSong = () => {
+    const prev =
+    currentIndexOfSong >= songs.length - 1 ? 0 : currentIndexOfSong + 1;
+    playSong(next);
+
+  }
+
   return (
     <>
       <div className="text-start">
@@ -58,7 +69,10 @@ const Home = () => {
           <button className="btn btn-secondary">
             <i className="bi bi-skip-backward-btn-fill"></i>
           </button>
-          <button className="btn btn-secondary" onClick={() => audio.current.pause()}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => audio.current.pause()}
+          >
             <i className="bi bi-pause-btn-fill"></i>
           </button>
           <button
@@ -67,7 +81,10 @@ const Home = () => {
           >
             <i className="bi bi-play-btn-fill"></i>
           </button>
-          <button className="btn btn-secondary">
+          <button
+            className="btn btn-secondary"
+            onClick={nextSong}
+          >
             <i className="bi bi-skip-forward-btn-fill"></i>
           </button>
         </div>
