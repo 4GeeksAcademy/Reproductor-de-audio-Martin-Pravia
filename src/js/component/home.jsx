@@ -43,10 +43,9 @@ const Home = () => {
 
   const prevSong = () => {
     const prev =
-    currentIndexOfSong >= songs.length - 1 ? 0 : currentIndexOfSong + 1;
-    playSong(next);
-
-  }
+      currentIndexOfSong > 0 ? currentIndexOfSong - 1 : songs.length - 1;
+    playSong(prev);
+  };
 
   return (
     <>
@@ -66,7 +65,7 @@ const Home = () => {
       <footer className="bg-dark text-center py-2 position-fixed bottom-0 w-100">
         <audio ref={audio}></audio>
         <div className="d-flex justify-content-around align-items-center">
-          <button className="btn btn-secondary">
+          <button className="btn btn-secondary" onClick={prevSong}>
             <i className="bi bi-skip-backward-btn-fill"></i>
           </button>
           <button
@@ -81,10 +80,7 @@ const Home = () => {
           >
             <i className="bi bi-play-btn-fill"></i>
           </button>
-          <button
-            className="btn btn-secondary"
-            onClick={nextSong}
-          >
+          <button className="btn btn-secondary" onClick={nextSong}>
             <i className="bi bi-skip-forward-btn-fill"></i>
           </button>
         </div>
