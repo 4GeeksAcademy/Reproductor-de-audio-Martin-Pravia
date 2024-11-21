@@ -49,6 +49,11 @@ const Home = () => {
 
   return (
     <>
+      <nav class="navbar bg-body-tertiary ">
+        <div class="container-fluid text-bg-success p-4">
+          <span class="navbar-brand mb-0 h1 reproductor ">Reproductor de música</span>
+        </div>
+      </nav>
       <div className="text-start">
         <ol className="list-group list-group-numbered">
           {songs.map((song, index) => (
@@ -62,25 +67,25 @@ const Home = () => {
           ))}
         </ol>
       </div>
-      <footer className="bg-dark text-center py-2 position-fixed bottom-0 w-100">
+      <footer className="bg-success text-center py-2 position-fixed bottom-0 w-100">
         <audio ref={audio}></audio>
         <div className="d-flex justify-content-around align-items-center">
-          <button className="btn btn-secondary" onClick={prevSong}>
+          <button className="btn btn-primary border border-white" onClick={prevSong}>
             <i className="bi bi-skip-backward-btn-fill"></i>
           </button>
           <button
-            className="btn btn-secondary"
+            className="btn btn-danger border border-white"
             onClick={() => audio.current.pause()}
           >
             <i className="bi bi-pause-btn-fill"></i>
           </button>
           <button
-            className="btn btn-secondary"
+            className="btn btn-success border border-white"
             onClick={() => audio.current.play()}
           >
             <i className="bi bi-play-btn-fill"></i>
           </button>
-          <button className="btn btn-secondary" onClick={nextSong}>
+          <button className="btn btn-primary border border-white" onClick={nextSong}>
             <i className="bi bi-skip-forward-btn-fill"></i>
           </button>
         </div>
